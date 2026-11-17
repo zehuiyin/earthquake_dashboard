@@ -48,7 +48,8 @@ for (i in df) {
   }
   
   earthquake[j, "mag"] <- i$properties$mag
-  earthquake[j, "place"] <- i$properties$place
+  earthquake[j, "place"] <- ifelse(is.null(i$properties$place), 
+                                   "Unknown", i$properties$place)
   earthquake[j, "url"] <- i$properties$url
   earthquake[j, "type"] <- i$properties$type
   earthquake[j, "time"] <- i$properties$time/1000
